@@ -1,8 +1,9 @@
 import os
 from sensor.entity.config_entity import TRANSFORMER_OBJECT_FILE_NAME,MODEL_FILE_NAME,TARGET_ENCODER_OBJECT_FILE_NAME
 from glob import glob
+from sensor.exception import SensorException
 from typing import Optional
-import os
+import os,sys
 
 class ModelResolver:
     
@@ -45,7 +46,7 @@ class ModelResolver:
                 raise Exception(f"Transformer is not available")
             return os.path.join(latest_dir,self.transformer_dir_name,TRANSFORMER_OBJECT_FILE_NAME)
         except Exception as e:
-            raise e
+            raise SensorException(e,sys)
 
     def get_latest_target_encoder_path(self):
         try:
@@ -87,11 +88,3 @@ class ModelResolver:
             return os.path.join(latest_dir,self.target_encoder_dir_name,TARGET_ENCODER_OBJECT_FILE_NAME)
         except Exception as e:
             raise e
-
-
-    
-
-
-
-
-

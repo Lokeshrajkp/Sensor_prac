@@ -113,5 +113,3 @@ class DataTransformation:
             return data_transformation_artifact
         except Exception as e:
             raise SensorException(e, sys)
-
-

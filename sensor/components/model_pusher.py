@@ -5,6 +5,7 @@ import os,sys
 from sensor.utils import load_object,save_object
 from sensor.logger import logging
 from sensor.entity.artifact_entity import DataTransformationArtifact,ModelTrainerArtifact,ModelPusherArtifact
+
 class ModelPusher:
 
     def __init__(self,model_pusher_config:ModelPusherConfig,
@@ -23,8 +24,8 @@ class ModelPusher:
         try:
             #load object
             logging.info(f"Loading transformer model and target encoder")
-            transformer = load_object(file_path=self.data_transformation_artifact.transform_object_path)
-            model = load_object(file_path=self.model_trainer_artifact.model_path)
+            transformer =load_object(file_path=self.data_transformation_artifact.transform_object_path)
+            model =load_object(file_path=self.model_trainer_artifact.model_path)
             target_encoder = load_object(file_path=self.data_transformation_artifact.target_encoder_path)
 
             #model pusher dir
@@ -50,7 +51,3 @@ class ModelPusher:
             return model_pusher_artifact
         except Exception as e:
             raise SensorException(e, sys)
-
-
-        
-

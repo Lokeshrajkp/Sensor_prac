@@ -19,8 +19,8 @@ def start_batch_prediction(input_file_path):
         #validation
         
         logging.info(f"Loading transformer to transform dataset")
-        transformer = load_object(file_path=model_resolver.get_latest_transformer_path())
-        
+        transformer=load_object(file_path=model_resolver.get_latest_transformer_path())
+
         input_feature_names =  list(transformer.feature_names_in_)
         input_arr = transformer.transform(df[input_feature_names])
 
@@ -42,4 +42,4 @@ def start_batch_prediction(input_file_path):
         df.to_csv(prediction_file_path,index=False,header=True)
         return prediction_file_path
     except Exception as e:
-        raise SensorException(e, sys)
+        raise SensorException(e,sys)
