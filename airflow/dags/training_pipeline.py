@@ -6,7 +6,7 @@ import pendulum
 import os
 from textwrap import dedent
 
-with DAG("sensor_training", start_date=pendulum.datetime(2023, 3, 6, tz="UTC"),
+#with DAG("sensor_training", start_date=pendulum.datetime(2023, 3, 6, tz="UTC"),
     schedule_interval="@weekly", catchup=False,description='Sensor fault detection',default_args={'retries':2},tags=['example']) as dag:
 
 
