@@ -1,7 +1,7 @@
 from asyncio import tasks
 import json
 from airflow import DAG
-from airflow.operators import PythonOperator
+from airflow.operators.python import PythonOperator
 import pendulum
 import os
 from textwrap import dedent
